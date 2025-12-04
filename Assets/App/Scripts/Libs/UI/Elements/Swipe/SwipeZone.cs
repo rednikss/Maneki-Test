@@ -1,26 +1,30 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace App.Scripts.Libs.UI.Elements.Swipe
 {
-    public class SwipeZone : Selectable, IDragHandler ////min length
+    public class SwipeZone : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
     {
         public event Action<Vector2> OnValueSet;
         
-        private Vector2 _value;
-
-        private Vector2 _swipeStartPoint;
-
         private Camera _activeCamera;
-
-        public void Construct(Camera activeCamera)
+        
+        private float _minSwipeLength;
+        
+        private Vector2 _swipeStartPoint;
+        
+        private Vector2 _value;
+        
+        public void Construct(Camera activeCamera, float minSwipeLength)
         {
             _activeCamera = activeCamera;
+            _minSwipeLength = minSwipeLength;
         }
         
-        public override void OnPointerDown(PointerEventData eventData)
+        public Vector2 GetValue() => _value;
+        
+        public void OnPointerDown(PointerEventData eventData)
         {
             _swipeStartPoint = eventData.position;
         }
@@ -30,13 +34,15 @@ namespace App.Scripts.Libs.UI.Elements.Swipe
             _value = CalculateValue(_swipeStartPoint, eventData.position);
         }
 
-        public override void OnPointerUp(PointerEventData eventData)
+        public void OnPointerUp(PointerEventData eventData)
         {
-            OnValueSet?.Invoke(_value);
+            if (_value.magnitude >= _minSwipeLength)
+            {
+                OnValueSet?.Invoke(_value);
+            }
+            
             _value = Vector2.zero;
         }
-
-        public Vector2 GetValue() => _value;
 
         private Vector2 CalculateValue(Vector2 pixelStartPosition, Vector2 pixelEndPosition)
         {

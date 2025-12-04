@@ -1,7 +1,6 @@
 using App.Scripts.Libs.UI.AnimatedView.CanvasGroup.Base;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using UnityEngine;
 
 namespace App.Scripts.Libs.UI.AnimatedView.CanvasGroup.Fade
 {
@@ -17,7 +16,7 @@ namespace App.Scripts.Libs.UI.AnimatedView.CanvasGroup.Fade
                 .SetEase(config.inEase)
                 .SetLink(gameObject);
             
-            await CurrentTween.AwaitForComplete();
+            await CurrentTween.AsyncWaitForCompletion();
         }
 
         public override async UniTask HideAnimated()
@@ -28,7 +27,7 @@ namespace App.Scripts.Libs.UI.AnimatedView.CanvasGroup.Fade
                 .SetEase(config.outEase)
                 .SetLink(gameObject);
 
-            await CurrentTween.AwaitForComplete();
+            await CurrentTween;
             
             base.Hide();
         }
