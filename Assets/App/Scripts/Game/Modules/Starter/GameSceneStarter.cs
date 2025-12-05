@@ -2,7 +2,7 @@
 using App.Scripts.Libs.UI.Panel.Manager;
 using App.Scripts.UI.Panels.Game.Controller;
 
-namespace App.Scripts.Game.Starter
+namespace App.Scripts.Game.Modules.Starter
 {
     public class GameSceneStarter : MonoInitializable
     {
