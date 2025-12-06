@@ -1,4 +1,5 @@
 ﻿using App.Scripts.Game.Modules.Follower.Config;
+using App.Scripts.Libs.Mechanics.Time.Tickable;
 using App.Scripts.Libs.Mechanics.Time.Timer;
 using UnityEngine;
 

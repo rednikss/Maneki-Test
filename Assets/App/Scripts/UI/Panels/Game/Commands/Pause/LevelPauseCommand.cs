@@ -1,4 +1,4 @@
-﻿using App.Scripts.Libs.Mechanics.Time.Handler;
+﻿using App.Scripts.Libs.Mechanics.Time.Tickable.Handler.Default;
 using App.Scripts.Libs.Patterns.Command.Default;
 using App.Scripts.Libs.UI.Panel.Manager;
 

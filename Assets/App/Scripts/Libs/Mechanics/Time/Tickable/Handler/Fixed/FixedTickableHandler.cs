@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
-using App.Scripts.Libs.Mechanics.Time.Timer;
 using UnityEngine;
 
-namespace App.Scripts.Libs.Mechanics.Time.Handler
+namespace App.Scripts.Libs.Mechanics.Time.Tickable.Handler.Fixed
 {
-    public class MonoTickableHandler : MonoBehaviour
+    public class FixedTickableHandler : MonoBehaviour
     {
         private readonly List<ITickable> _tickables = new();
         
-        private void Update()
+        private void FixedUpdate()
         {
             foreach (var tickable in _tickables)
             {

@@ -1,10 +1,10 @@
-﻿using App.Scripts.Game.Entity.Base.Obstacle;
-using App.Scripts.Game.Entity.Base.Obstacle.Config;
+﻿using App.Scripts.Game.Entity.Obstacle.Base;
+using App.Scripts.Game.Entity.Obstacle.Base.Config;
 using App.Scripts.Libs.Patterns.ObjectPool;
 
-namespace App.Scripts.Game.Entity.Pool
+namespace App.Scripts.Game.Entity.Obstacle.Pool
 {
-    public class EntityPool : MonoBehaviourPool<ObstacleBase>
+    public class ObstaclePool : MonoBehaviourPool<ObstacleBase>
     {
         private ObstacleConfig _obstacleConfig;
         
@@ -18,7 +18,8 @@ namespace App.Scripts.Game.Entity.Pool
             var obj = base.Create();
             
             obj.AttackingEntity.Construct(_obstacleConfig.Damage);
-
+            obj.ObstacleAnimator.Construct();
+            
             return obj;
         }
     }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using App.Scripts.Game.Entity.Base.Obstacle;
 using App.Scripts.Game.Entity.Movement.DirectionProvider.Straight;
-using App.Scripts.Libs.Mechanics.Time.Timer;
+using App.Scripts.Game.Entity.Obstacle.Base;
+using App.Scripts.Libs.Mechanics.Time.Tickable;
 using App.Scripts.Libs.Patterns.ObjectPool;
 using UnityEngine;
 
@@ -44,6 +44,7 @@ namespace App.Scripts.Game.Level.Lane.Base
             var provider = new StraightDirectionProvider(_receivePoint.transform.position - startPosition);
             
             entity.MovingEntity.Construct(provider, entitySpeed);
+            entity.ObstacleAnimator.SetSpeed(entitySpeed);
             entity.transform.position = startPosition;
             
             _movingEntities.Add(entity);

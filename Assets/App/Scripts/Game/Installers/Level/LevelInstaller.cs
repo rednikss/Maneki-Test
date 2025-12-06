@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using App.Scripts.Game.Entity.Base.Obstacle.Config;
-using App.Scripts.Game.Entity.Pool;
+using App.Scripts.Game.Entity.Obstacle.Base.Config;
+using App.Scripts.Game.Entity.Obstacle.Pool;
 using App.Scripts.Game.Level.Config.Lane;
 using App.Scripts.Game.Level.Lane.Base;
 using App.Scripts.Game.Level.Lane.Handler;
 using App.Scripts.Libs.Infrastructure.Core.Service.Container;
 using App.Scripts.Libs.Infrastructure.Core.Service.Installer;
-using App.Scripts.Libs.Mechanics.Time.Handler;
 using App.Scripts.Libs.Mechanics.Time.Tickable.Container;
+using App.Scripts.Libs.Mechanics.Time.Tickable.Handler.Fixed;
 using App.Scripts.Libs.Mechanics.Time.Timer;
 using UnityEngine;
 
@@ -20,11 +20,11 @@ namespace App.Scripts.Game.Installers.Level
         
         [SerializeField] private LaneData[] _lanes;
 
-        [SerializeField] private EntityPool _pool;
+        [SerializeField] private ObstaclePool _pool;
             
         public override void InstallBindings(ServiceContainer container)
         {
-            var handler = container.GetService<MonoTickableHandler>();
+            var handler = container.GetService<FixedTickableHandler>();
             var timer = container.GetService<Timer>();
             _pool.Construct(_obstacleConfig);
             

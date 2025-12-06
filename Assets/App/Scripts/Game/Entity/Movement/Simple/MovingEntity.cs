@@ -1,5 +1,5 @@
 ﻿using App.Scripts.Game.Entity.Movement.DirectionProvider;
-using App.Scripts.Libs.Mechanics.Time.Timer;
+using App.Scripts.Libs.Mechanics.Time.Tickable;
 using UnityEngine;
 
 namespace App.Scripts.Game.Entity.Movement.Simple
@@ -11,7 +11,7 @@ namespace App.Scripts.Game.Entity.Movement.Simple
         private IDirectionProvider _directionProvider;
 
         private float _moveSpeed;
-        
+
         public void Construct(IDirectionProvider directionProvider, float moveSpeed)
         {
             _directionProvider = directionProvider;
@@ -22,8 +22,9 @@ namespace App.Scripts.Game.Entity.Movement.Simple
         {
             var direction = _directionProvider.GetDirection();
             var delta = deltaTime * _moveSpeed * direction;
-
-            _rigidbody.MovePosition(_rigidbody.position + delta);
+            
+            _rigidbody.Move(_rigidbody.position + delta, 
+                Quaternion.LookRotation(direction));
         }
     }
 }

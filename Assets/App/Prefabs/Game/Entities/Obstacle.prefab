@@ -359,6 +359,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8896140709756436766}
+  - component: {fileID: 5856260683510720075}
+  - component: {fileID: 7425757014481243573}
   m_Layer: 0
   m_Name: Stickman
   m_TagString: Untagged
@@ -383,6 +385,41 @@ Transform:
   - {fileID: 6918867711476867073}
   m_Father: {fileID: 8192917190967509962}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!95 &5856260683510720075
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2942885210731909957}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3f03719fe9c9cb84085377ea214cef6f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7425757014481243573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2942885210731909957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b8da09b0ea491fb120d668f23dbdb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 5856260683510720075}
+  _animationName: Speed
 --- !u!1 &3257749357360912478
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,6 +1129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movingEntity: {fileID: 2088374753513247284}
   _attackingEntity: {fileID: 4641690425969071282}
+  _obstacleAnimator: {fileID: 7425757014481243573}
 --- !u!114 &2088374753513247284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1157,7 +1195,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0

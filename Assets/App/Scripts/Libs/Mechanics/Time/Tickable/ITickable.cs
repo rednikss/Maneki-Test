@@ -1,4 +1,4 @@
-﻿namespace App.Scripts.Libs.Mechanics.Time.Timer
+﻿namespace App.Scripts.Libs.Mechanics.Time.Tickable
 {
     public interface ITickable
     {

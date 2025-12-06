@@ -1,5 +1,6 @@
 ﻿using App.Scripts.Game.Level.Config.Lane;
 using App.Scripts.Game.Level.Lane.Base;
+using App.Scripts.Libs.Mechanics.Time.Tickable;
 using App.Scripts.Libs.Mechanics.Time.Timer;
 using App.Scripts.Libs.Patterns.Command.Default;
 

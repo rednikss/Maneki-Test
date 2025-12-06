@@ -141,6 +141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4103042575175051137}
   - component: {fileID: 1960661534224684134}
+  - component: {fileID: 8834691238906539728}
   m_Layer: 0
   m_Name: Tickable Handler
   m_TagString: Untagged
@@ -173,6 +174,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc26f069addd49a7a816596848fc386b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8834691238906539728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2845674000170018608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4818c8846bcf4bd09f4b369b503f056a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4237586084245019005
@@ -370,7 +383,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectCanvas: {fileID: 4914926653725405642}
-  tickableHandler: {fileID: 1960661534224684134}
+  defaultTickableHandler: {fileID: 1960661534224684134}
+  fixedTickableHandler: {fileID: 8834691238906539728}
 --- !u!1 &8905070553760247445
 GameObject:
   m_ObjectHideFlags: 0

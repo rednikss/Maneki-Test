@@ -5,8 +5,8 @@ using App.Scripts.Game.Modules.Follower.Config;
 using App.Scripts.Game.Modules.Starter;
 using App.Scripts.Libs.Infrastructure.Core.Service.Container;
 using App.Scripts.Libs.Infrastructure.Core.Service.Installer;
-using App.Scripts.Libs.Mechanics.Time.Handler;
 using App.Scripts.Libs.Mechanics.Time.Tickable.Container;
+using App.Scripts.Libs.Mechanics.Time.Tickable.Handler.Default;
 using App.Scripts.Libs.UI.Panel.Manager;
 using UnityEngine;
 

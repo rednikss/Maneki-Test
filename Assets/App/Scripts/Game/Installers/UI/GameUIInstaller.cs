@@ -2,7 +2,7 @@
 using App.Scripts.Game.Entity.Base.Player;
 using App.Scripts.Libs.Infrastructure.Core.Service.Container;
 using App.Scripts.Libs.Infrastructure.Core.Service.Installer;
-using App.Scripts.Libs.Mechanics.Time.Handler;
+using App.Scripts.Libs.Mechanics.Time.Tickable.Handler.Default;
 using App.Scripts.Libs.Patterns.Factory;
 using App.Scripts.Libs.UI.Panel.Controller;
 using App.Scripts.Libs.UI.Panel.Manager;
