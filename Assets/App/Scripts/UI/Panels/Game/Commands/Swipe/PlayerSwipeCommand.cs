@@ -1,4 +1,4 @@
-﻿using App.Scripts.Game.Player.Movement;
+﻿using App.Scripts.Game.Entity.Movement.Dash;
 using App.Scripts.Libs.Patterns.Command.Value;
 using UnityEngine;
 

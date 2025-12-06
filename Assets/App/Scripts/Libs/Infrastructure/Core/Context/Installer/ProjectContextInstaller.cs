@@ -1,6 +1,6 @@
 ﻿using App.Scripts.Libs.Infrastructure.Core.Service.Container;
 using App.Scripts.Libs.Infrastructure.Core.Service.Installer;
-using App.Scripts.Libs.Mechanics.Time.TimeHandler;
+using App.Scripts.Libs.Mechanics.Time.Handler;
 using App.Scripts.Libs.Mechanics.Time.Timer;
 using App.Scripts.Libs.UI.Panel.Manager;
 using UnityEngine;
@@ -11,7 +11,7 @@ namespace App.Scripts.Libs.Infrastructure.Core.Context.Installer
     {
         [SerializeField] private Canvas _projectCanvas;
 
-        [SerializeField] private MonoTimerHandler _timerHandler;
+        [SerializeField] private MonoTickableHandler tickableHandler;
         
         public override void InstallBindings(ServiceContainer container)
         {
@@ -20,8 +20,11 @@ namespace App.Scripts.Libs.Infrastructure.Core.Context.Installer
             var panelManager = new PanelManager();
             container.SetServiceSelf(panelManager);
             
-            _timerHandler.Construct(new Timer());
-            container.SetServiceSelf(_timerHandler);
+            container.SetServiceSelf(tickableHandler);
+
+            var timer = new Timer();
+            tickableHandler.AddTickable(timer);
+            container.SetServiceSelf(timer);
         }
     }
 }

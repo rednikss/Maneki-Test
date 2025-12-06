@@ -6,22 +6,45 @@ namespace App.Scripts.Libs.Mechanics.Time.Timer
     {
         private float _currentTime;
 
-        private readonly List<ITickable> _tickables = new();
+        private readonly List<TimerEvent> _timerEvents = new();
 
         public void Tick(float deltaTime)
         {
             _currentTime += deltaTime;
 
-            foreach (var t in _tickables)
+            for (var i = 0; i < _timerEvents.Count; i++)
             {
-                t.Tick(deltaTime);
+                EventCheck(_timerEvents[i]);
             }
         }
 
-        public void AddTickable(ITickable tickable) => _tickables.Add(tickable);
+        public void AddEvent(TimedEvent timerEvent, float delay)
+        {
+            _timerEvents.Add(new TimerEvent(timerEvent, _currentTime + delay));
+        }
 
-        public void RemoveTickable(ITickable tickable) => _tickables.Remove(tickable);
+        private void EventCheck(TimerEvent timerEvent)
+        {
+            if (timerEvent.Time > _currentTime) return;
+            
+            _timerEvents.Remove(timerEvent);
+            timerEvent.Event?.Invoke();
+        }
+        
+        private class TimerEvent
+        {
+            public readonly float Time;
+            
+            public readonly TimedEvent Event;
 
-        public float GetCurrentTime() => _currentTime;
+            public TimerEvent(TimedEvent newEvent, float invokeTime)
+            {
+                Event = newEvent;
+                Time = invokeTime;
+            }
+        }
+        
+        public delegate void TimedEvent();
     }
+    
 }

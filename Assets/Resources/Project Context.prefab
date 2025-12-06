@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 4103042575175051137}
   - component: {fileID: 1960661534224684134}
   m_Layer: 0
-  m_Name: Timer
+  m_Name: Tickable Handler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectCanvas: {fileID: 4914926653725405642}
-  _timerHandler: {fileID: 1960661534224684134}
+  tickableHandler: {fileID: 1960661534224684134}
 --- !u!1 &8905070553760247445
 GameObject:
   m_ObjectHideFlags: 0

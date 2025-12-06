@@ -2,7 +2,7 @@
 using App.Scripts.Game.Player.Base;
 using App.Scripts.Libs.Infrastructure.Core.Service.Container;
 using App.Scripts.Libs.Infrastructure.Core.Service.Installer;
-using App.Scripts.Libs.Mechanics.Time.TimeHandler;
+using App.Scripts.Libs.Mechanics.Time.Handler;
 using App.Scripts.Libs.Patterns.Factory;
 using App.Scripts.Libs.UI.Panel.Controller;
 using App.Scripts.Libs.UI.Panel.Manager;
@@ -35,7 +35,7 @@ namespace App.Scripts.Game.Installers.UI
             var manager = container.GetService<PanelManager>();
             
             var pause = new LevelPauseCommand(
-                container.GetService<MonoTimerHandler>(),
+                container.GetService<MonoTickableHandler>(),
                 manager);
 
             var swipe = new PlayerSwipeCommand(

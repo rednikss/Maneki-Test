@@ -11,7 +11,7 @@ namespace App.Scripts.Game.Installers.Player
         
         public override void InstallBindings(ServiceContainer container)
         {
-            var position = new Vector3(0, 0.375f, 0);
+            var position = Vector3.zero;
             
             var player = Instantiate(_playerPrefab, position, Quaternion.identity);
 

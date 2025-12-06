@@ -1,10 +1,10 @@
 ﻿using System;
-using App.Scripts.Game.Player.Movement.Config;
+using App.Scripts.Game.Entity.Movement.Dash.Config;
 using App.Scripts.Libs.Extensions.LayerMask;
 using DG.Tweening;
 using UnityEngine;
 
-namespace App.Scripts.Game.Player.Movement
+namespace App.Scripts.Game.Entity.Movement.Dash
 {
     public class DashingEntity : MonoBehaviour
     {
