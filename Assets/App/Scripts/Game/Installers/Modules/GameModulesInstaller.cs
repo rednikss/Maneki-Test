@@ -1,8 +1,8 @@
-﻿using App.Scripts.Game.Level.Lane.Handler;
+﻿using App.Scripts.Game.Entity.Base.Player;
+using App.Scripts.Game.Level.Lane.Handler;
 using App.Scripts.Game.Modules.Follower;
 using App.Scripts.Game.Modules.Follower.Config;
 using App.Scripts.Game.Modules.Starter;
-using App.Scripts.Game.Player.Base;
 using App.Scripts.Libs.Infrastructure.Core.Service.Container;
 using App.Scripts.Libs.Infrastructure.Core.Service.Installer;
 using App.Scripts.Libs.Mechanics.Time.Handler;

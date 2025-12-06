@@ -1050,11 +1050,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8192917190967509962}
+  - component: {fileID: 1087873029329721305}
   - component: {fileID: 2088374753513247284}
+  - component: {fileID: 4641690425969071282}
   - component: {fileID: 7233115759481978400}
   - component: {fileID: 2351268600986753223}
   m_Layer: 6
-  m_Name: Enemy
+  m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1076,6 +1078,20 @@ Transform:
   - {fileID: 8896140709756436766}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1087873029329721305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8742472440505725806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f980c432eba4aeabac58a3a313ddf64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movingEntity: {fileID: 2088374753513247284}
+  _attackingEntity: {fileID: 4641690425969071282}
 --- !u!114 &2088374753513247284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1089,6 +1105,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 7233115759481978400}
+--- !u!114 &4641690425969071282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8742472440505725806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66fc3bc753da4a2bbf6d2414c7b2e367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &7233115759481978400
 Rigidbody:
   m_ObjectHideFlags: 0

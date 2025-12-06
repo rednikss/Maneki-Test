@@ -826,6 +826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82560ef730af4ecb8438e2d74bbe5654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _obstacleConfig: {fileID: 11400000, guid: 29bde5fd17f8386448b6282fd5c57c04, type: 2}
   _lanes:
   - Config: {fileID: 11400000, guid: 9733942e427799642a5b027f14cc3136, type: 2}
     LaneBase: {fileID: 2139416827626875645}
@@ -1143,7 +1144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSize: 10
-  prefab: {fileID: 2088374753513247284, guid: 4cf7ba44660eae647bbfaf0c53076159, type: 3}
+  prefab: {fileID: 1087873029329721305, guid: 4cf7ba44660eae647bbfaf0c53076159, type: 3}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,6 +1281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33abdc0fd72e404f82593b8be90164fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerConfig: {fileID: 11400000, guid: 3c5195438fa481d42b0cfbe5f7e1b093, type: 2}
   _playerPrefab: {fileID: 1260077246923037623, guid: 3442359d85826f741bebed4dd964b1ef, type: 3}
 --- !u!1 &983069943
 GameObject:

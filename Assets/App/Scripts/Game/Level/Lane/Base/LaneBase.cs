@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using App.Scripts.Game.Entity.Movement.Straight;
+using App.Scripts.Game.Entity.Base.Obstacle;
+using App.Scripts.Game.Entity.Movement.DirectionProvider.Straight;
 using App.Scripts.Libs.Mechanics.Time.Timer;
 using App.Scripts.Libs.Patterns.ObjectPool;
 using UnityEngine;
@@ -12,11 +13,11 @@ namespace App.Scripts.Game.Level.Lane.Base
 
         [SerializeField] private Transform _receivePoint;
         
-        private IObjectPool<MovingEntity> _entityPool;
+        private IObjectPool<ObstacleBase> _entityPool;
 
-        private List<MovingEntity> _movingEntities;
+        private List<ObstacleBase> _movingEntities;
 
-        public void Construct(IObjectPool<MovingEntity> pool)
+        public void Construct(IObjectPool<ObstacleBase> pool)
         {
             _entityPool = pool;
             _movingEntities = new();
@@ -26,11 +27,11 @@ namespace App.Scripts.Game.Level.Lane.Base
         {
             foreach (var entity in _movingEntities)
             {
-                entity.Tick(deltaTime);
+                entity.MovingEntity.Tick(deltaTime);
             }
         }
 
-        public void RemoveEntity(MovingEntity entity)
+        public void RemoveEntity(ObstacleBase entity)
         {
             _movingEntities.Remove(entity);
             _entityPool.ReturnObject(entity);
@@ -39,18 +40,13 @@ namespace App.Scripts.Game.Level.Lane.Base
         public void AddEntity(float entitySpeed)
         {
             var entity = _entityPool.Get();
-            entity.Construct(CalculateMoveDirection(), entitySpeed);
-            entity.transform.position = _spawnPoint.position;
+            var startPosition = _spawnPoint.position;
+            var provider = new StraightDirectionProvider(_receivePoint.transform.position - startPosition);
+            
+            entity.MovingEntity.Construct(provider, entitySpeed);
+            entity.transform.position = startPosition;
             
             _movingEntities.Add(entity);
-        }
-
-        private Vector3 CalculateMoveDirection()
-        {
-            var dir = _receivePoint.position - _spawnPoint.position;
-            dir.y = 0;
-            
-            return dir.normalized;
         }
     }
 }

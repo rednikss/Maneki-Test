@@ -8,13 +8,18 @@ namespace App.Scripts.Game.Entity.Movement.Dash
 {
     public class DashingEntity : MonoBehaviour
     {
-        [SerializeField] private DashConfig _dashConfig;
-        
         [SerializeField] private Rigidbody _rigidbody;
 
+        private DashConfig _dashConfig;
+        
         private Vector3 _nextPosition;
 
         private Tween _dashTween;
+
+        public void Construct(DashConfig dashConfig)
+        {
+            _dashConfig = dashConfig;
+        }
         
         public void Dash(Vector3 direction)
         {

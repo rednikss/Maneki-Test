@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using App.Scripts.Game.Entity.Base.Obstacle.Config;
 using App.Scripts.Game.Entity.Pool;
 using App.Scripts.Game.Level.Config.Lane;
 using App.Scripts.Game.Level.Lane.Base;
@@ -15,6 +16,8 @@ namespace App.Scripts.Game.Installers.Level
 {
     public class LevelInstaller : MonoInstaller
     {
+        [SerializeField] private ObstacleConfig _obstacleConfig;
+        
         [SerializeField] private LaneData[] _lanes;
 
         [SerializeField] private EntityPool _pool;
@@ -23,9 +26,9 @@ namespace App.Scripts.Game.Installers.Level
         {
             var handler = container.GetService<MonoTickableHandler>();
             var timer = container.GetService<Timer>();
+            _pool.Construct(_obstacleConfig);
             
             var laneHandlersList = new List<LaneHandler>();
-            
             foreach (var laneData in _lanes)
             {
                 laneData.LaneBase.Construct(_pool);
