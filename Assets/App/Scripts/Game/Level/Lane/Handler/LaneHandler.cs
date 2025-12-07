@@ -1,5 +1,5 @@
-﻿using App.Scripts.Game.Level.Config.Lane;
-using App.Scripts.Game.Level.Lane.Base;
+﻿using App.Scripts.Game.Level.Lane.Base;
+using App.Scripts.Game.Level.Lane.Base.Config;
 using App.Scripts.Libs.Mechanics.Time.Tickable;
 using App.Scripts.Libs.Mechanics.Time.Timer;
 using App.Scripts.Libs.Patterns.Command.Default;
@@ -8,28 +8,26 @@ namespace App.Scripts.Game.Level.Lane.Handler
 {
     public class LaneHandler : ITickable
     {
-        private readonly LaneConfig _config;
-        
         private readonly LaneBase _lane;
-
-        private readonly Timer _timer;
 
         private readonly CycleSpawnCommand _command;
         
         public LaneHandler(LaneBase lane, LaneConfig config, Timer timer)
         {
-            _config = config;
             _lane = lane;
-            _timer = timer;
 
-            _command = new CycleSpawnCommand(_config, _lane, _timer);
+            _command = new CycleSpawnCommand(config, _lane, timer);
         }
 
-        public void Start()
+        public void Activate()
         {
-            _timer.AddEvent(
-                _command.Execute, 
-                _config.SpawnOffset);
+            _command.Execute();
+        }
+
+        public void Deactivate()
+        {
+            _command.Cancel();
+            _lane.ClearLane();
         }
         
         public void Tick(float deltaTime)
@@ -45,6 +43,8 @@ namespace App.Scripts.Game.Level.Lane.Handler
 
             private readonly Timer _timer;
 
+            private Timer.TimerEvent _timerEvent;
+            
             public CycleSpawnCommand(LaneConfig config, LaneBase lane, Timer timer)
             {
                 _config = config;
@@ -55,7 +55,13 @@ namespace App.Scripts.Game.Level.Lane.Handler
             public void Execute()
             {
                 _lane.AddEntity(_config.EntitySpeed);
-                _timer.AddEvent(Execute, _config.SpawnRate);
+                _timerEvent = _timer.AddEvent(Execute, _config.SpawnRate);
+            }
+
+            public void Cancel()
+            {
+                if (_timerEvent == null) return;
+                _timer.CancelEvent(_timerEvent);
             }
         }
     }

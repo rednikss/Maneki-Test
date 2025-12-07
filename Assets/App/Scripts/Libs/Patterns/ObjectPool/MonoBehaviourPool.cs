@@ -1,32 +1,28 @@
 ﻿using System.Collections.Generic;
-using App.Scripts.Libs.Infrastructure.Core.EntryPoint.Initializable;
 using UnityEngine;
 
 namespace App.Scripts.Libs.Patterns.ObjectPool
 {
-    public abstract class MonoBehaviourPool<TObject> : MonoInitializable, IObjectPool<TObject> where TObject : MonoBehaviour
+    public abstract class MonoBehaviourPool<TObject> : MonoBehaviour, IObjectPool<TObject> where TObject : MonoBehaviour
     {
         [SerializeField] protected int startSize;
 
         [SerializeField] protected TObject prefab;
         
+        protected readonly List<TObject> UsingObjects = new();
+        
         private readonly Stack<TObject> _pool = new();
 
-        private readonly List<TObject> _usingObjects = new();
-        
-        public override void Init()
+        protected void CreateStartPool()
         {
-            for (int i = 0; i < startSize; i++)
-            {
-                Create();
-            }
+            for (int i = 0; i < startSize; i++) Create();
         }
 
         protected virtual TObject Create()
         {
             var newObject = Instantiate(prefab, transform);
             
-            _usingObjects.Add(newObject);
+            UsingObjects.Add(newObject);
             ReturnObject(newObject);
 
             return newObject;
@@ -43,14 +39,14 @@ namespace App.Scripts.Libs.Patterns.ObjectPool
         {
             pooledObject.gameObject.SetActive(false);
 
-            _usingObjects.Remove(pooledObject);
+            UsingObjects.Remove(pooledObject);
             _pool.Push(pooledObject);
         }
 
         protected virtual TObject TakeObject()
         {
             var pooledObject = _pool.Pop();
-            _usingObjects.Add(pooledObject);
+            UsingObjects.Add(pooledObject);
             
             pooledObject.gameObject.SetActive(true);
 
@@ -69,8 +65,8 @@ namespace App.Scripts.Libs.Patterns.ObjectPool
             
             if (!clearUsing) return;
 
-            foreach (var obj in _usingObjects) DestroyObject(obj);
-            _usingObjects.Clear();
+            foreach (var obj in UsingObjects) DestroyObject(obj);
+            UsingObjects.Clear();
         }
     }
 }

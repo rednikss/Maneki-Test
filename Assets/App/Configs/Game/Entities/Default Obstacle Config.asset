@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: Default Obstacle Config
   m_EditorClassIdentifier: 
   Damage: Infinity
+  AttackLayerMask:
+    serializedVersion: 2
+    m_Bits: 8

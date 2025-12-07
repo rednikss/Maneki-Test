@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81a4e8307730450f8572dc415245b40c, type: 3}
   m_Name: 3 Lane Config
   m_EditorClassIdentifier: 
-  SpawnOffset: 1
-  SpawnRate: 2
-  EntitySpeed: 1
+  SpawnOffset: 0
+  SpawnRate: 0.75
+  EntitySpeed: 5

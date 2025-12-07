@@ -7,11 +7,12 @@ namespace App.Scripts.Game.Entity.Attack.Damageable
     {
         private ICommand _onKillCommand;
 
+        private float _maxHealth;
         private float _health;
 
         public void Construct(float health, ICommand onKillCommand)
         {
-            _health = health;
+            _maxHealth = _health = health;
             _onKillCommand = onKillCommand;
         }
         
@@ -22,6 +23,11 @@ namespace App.Scripts.Game.Entity.Attack.Damageable
             
             if (_health > 0) return;
             _onKillCommand.Execute();
+        }
+
+        public void ResetHealth()
+        {
+            _health = _maxHealth;
         }
     }
 }

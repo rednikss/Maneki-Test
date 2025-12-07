@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using App.Scripts.Game.Entity.Movement.DirectionProvider.Straight;
-using App.Scripts.Game.Entity.Obstacle.Base;
+using App.Scripts.Game.Entity.Base.Obstacle;
+using App.Scripts.Game.Entity.Movement.Simple.DirectionProvider.Straight;
 using App.Scripts.Libs.Mechanics.Time.Tickable;
 using App.Scripts.Libs.Patterns.ObjectPool;
 using UnityEngine;
@@ -22,7 +22,7 @@ namespace App.Scripts.Game.Level.Lane.Base
             _entityPool = pool;
             _movingEntities = new();
         }
-        
+
         public void Tick(float deltaTime)
         {
             foreach (var entity in _movingEntities)
@@ -40,14 +40,23 @@ namespace App.Scripts.Game.Level.Lane.Base
         public void AddEntity(float entitySpeed)
         {
             var entity = _entityPool.Get();
-            var startPosition = _spawnPoint.position;
-            var provider = new StraightDirectionProvider(_receivePoint.transform.position - startPosition);
+            var position = _spawnPoint.position;
+            var laneDelta = _receivePoint.transform.position - position;
+            var provider = new StraightDirectionProvider(laneDelta.normalized);
             
             entity.MovingEntity.Construct(provider, entitySpeed);
             entity.ObstacleAnimator.SetSpeed(entitySpeed);
-            entity.transform.position = startPosition;
+            entity.transform.position = position;
             
             _movingEntities.Add(entity);
+        }
+
+        public void ClearLane()
+        {
+            while (_movingEntities.Count > 0)
+            {
+                RemoveEntity(_movingEntities[0]);
+            }
         }
     }
 }

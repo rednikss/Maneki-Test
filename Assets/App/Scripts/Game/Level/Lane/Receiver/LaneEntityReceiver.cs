@@ -1,4 +1,4 @@
-﻿using App.Scripts.Game.Entity.Obstacle.Base;
+﻿using App.Scripts.Game.Entity.Base.Obstacle;
 using App.Scripts.Game.Level.Lane.Base;
 using UnityEngine;
 

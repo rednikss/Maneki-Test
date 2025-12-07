@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace App.Scripts.Libs.Mechanics.Time.Tickable.Handler.Fixed
 {
-    public class FixedTickableHandler : MonoBehaviour
+    public class FixedTickableHandler : MonoBehaviour, ITickableHandler
     {
         private readonly List<ITickable> _tickables = new();
         

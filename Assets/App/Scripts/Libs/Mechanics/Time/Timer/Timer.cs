@@ -19,9 +19,17 @@ namespace App.Scripts.Libs.Mechanics.Time.Timer
             }
         }
 
-        public void AddEvent(TimedEvent timerEvent, float delay)
+        public TimerEvent AddEvent(TimedEvent timedEvent, float delay)
         {
-            _timerEvents.Add(new TimerEvent(timerEvent, _currentTime + delay));
+            var timerEvent = new TimerEvent(timedEvent, _currentTime + delay);
+            _timerEvents.Add(timerEvent);
+            
+            return timerEvent;
+        }
+
+        public void CancelEvent(TimerEvent timerEvent)
+        {
+            _timerEvents.Remove(timerEvent);
         }
 
         private void EventCheck(TimerEvent timerEvent)
@@ -32,7 +40,7 @@ namespace App.Scripts.Libs.Mechanics.Time.Timer
             timerEvent.Event?.Invoke();
         }
         
-        private class TimerEvent
+        public class TimerEvent
         {
             public readonly float Time;
             

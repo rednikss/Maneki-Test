@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f0623125024d23857c9ce93a60aa8f, type: 3}
   m_Name: Default Player Config
   m_EditorClassIdentifier: 
-  StartPosition: {x: 0, y: 0, z: -0.5}
-  Health: 3
+  Health: 5
   Damage: 1
   DashConfig: {fileID: 11400000, guid: 5a139c35729ffc942b778e75a84e7a11, type: 2}
+  AttackLayerMask:
+    serializedVersion: 2
+    m_Bits: 512

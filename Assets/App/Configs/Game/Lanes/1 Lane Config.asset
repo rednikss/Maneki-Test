@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: 1 Lane Config
   m_EditorClassIdentifier: 
   SpawnOffset: 0.5
-  SpawnRate: 2
-  EntitySpeed: 3
+  SpawnRate: 3
+  EntitySpeed: 1
