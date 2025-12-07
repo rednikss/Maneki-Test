@@ -9,9 +9,9 @@ namespace App.Scripts.Libs.Mechanics.Time.Tickable.Handler.Fixed
         
         private void FixedUpdate()
         {
-            foreach (var tickable in _tickables)
+            for (var i = 0; i < _tickables.Count; i++)
             {
-                tickable.Tick(UnityEngine.Time.deltaTime);
+                _tickables[i].Tick(UnityEngine.Time.deltaTime);
             }
         }
 

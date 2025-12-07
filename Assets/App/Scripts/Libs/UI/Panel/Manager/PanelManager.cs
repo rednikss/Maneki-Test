@@ -70,6 +70,11 @@ namespace App.Scripts.Libs.UI.Panel.Manager
             
             _panels.Remove(panel);
         }
+
+        public void HideAll()
+        {
+            foreach (var panel in _panels) panel.Hide();
+        }
         
         public void DestroyAll()
         {

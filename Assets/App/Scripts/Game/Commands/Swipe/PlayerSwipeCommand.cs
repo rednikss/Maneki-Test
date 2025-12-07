@@ -2,7 +2,7 @@
 using App.Scripts.Libs.Patterns.Command.Value;
 using UnityEngine;
 
-namespace App.Scripts.UI.Panels.Game.Commands.Swipe
+namespace App.Scripts.Game.Commands.Swipe
 {
     public class PlayerSwipeCommand : ICommand<Vector2>
     {

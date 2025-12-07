@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using App.Scripts.Libs.Infrastructure.Core.EntryPoint.Initializable;
 using App.Scripts.Libs.UI.AnimatedView.Config;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -8,22 +7,24 @@ using UnityEngine;
 
 namespace App.Scripts.Libs.UI.AnimatedView.Int
 {
-    public class AnimatedIntView : MonoInitializable
+    public class AnimatedIntView : MonoBehaviour
     {
         [SerializeField] private ConfigAnimation config;
         
         [SerializeField] protected TextMeshProUGUI label;
-        [SerializeField] protected string prefix;
-        [SerializeField] protected string postfix;
 
         private StringBuilder _builder = new();
+        
         private int _value;
 
-        public override void Init()
+        public void Construct(string prefix, string postfix, int newValue = 0)
         {
+            _value = newValue;
             _builder = new(prefix);
-            _builder.Append(0);
+            _builder.Append(_value);
             _builder.Append(postfix);
+            
+            label.text = _builder.ToString();
         }
 
         public void SetValue(int newValue)

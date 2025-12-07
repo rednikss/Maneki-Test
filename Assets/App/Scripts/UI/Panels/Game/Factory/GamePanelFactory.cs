@@ -13,15 +13,12 @@ namespace App.Scripts.UI.Panels.Game.Factory
 
         private readonly GamePanelView _viewPrefab;
 
-        private readonly ICommand _pauseCommand;
-        
         private readonly ICommand<Vector2> _swipeCommand;
         
-        public GamePanelFactory(GamePanelView view, Canvas canvas, ICommand pauseCommand, ICommand<Vector2> swipeCommand)
+        public GamePanelFactory(GamePanelView view, Canvas canvas, ICommand<Vector2> swipeCommand)
         {
             _canvas = canvas;
             _viewPrefab = view;
-            _pauseCommand = pauseCommand;
             _swipeCommand = swipeCommand;
         }
         
@@ -31,7 +28,7 @@ namespace App.Scripts.UI.Panels.Game.Factory
             panelView.SwipeZone.Construct(_canvas.worldCamera, 0.5f);
             panelView.Hide();
             
-            var panelController = new GamePanelController(panelView, _pauseCommand, _swipeCommand);
+            var panelController = new GamePanelController(panelView, _swipeCommand);
             
             return panelController;
         }

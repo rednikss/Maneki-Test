@@ -4,7 +4,6 @@ using App.Scripts.Libs.Mechanics.Time.Tickable.Handler;
 using App.Scripts.Libs.Patterns.Command.Default;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using TMPro;
 using UnityEngine;
 
 namespace App.Scripts.Game.Commands.Enemy.OnKill
@@ -28,7 +27,8 @@ namespace App.Scripts.Game.Commands.Enemy.OnKill
         {
             await _enemyBase.transform.DOScale(Vector3.zero, 0.5f)
                 .SetEase(Ease.OutCubic)
-                .SetLink(_enemyBase.gameObject).ToUniTask();
+                .SetLink(_enemyBase.gameObject)
+                .ToUniTask();
             
             _handler.RemoveTickable(_enemyBase);
             _enemyPool.ReturnObject(_enemyBase);

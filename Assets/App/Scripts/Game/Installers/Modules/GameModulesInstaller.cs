@@ -1,4 +1,6 @@
-﻿using App.Scripts.Game.Entity.Base.Player;
+﻿using App.Scripts.Game.Commands.Restart;
+using App.Scripts.Game.Entity.Base.Player;
+using App.Scripts.Game.Installers.Level;
 using App.Scripts.Game.Level.Lane.Handler;
 using App.Scripts.Game.Modules.Follower;
 using App.Scripts.Game.Modules.Follower.Config;
@@ -23,6 +25,8 @@ namespace App.Scripts.Game.Installers.Modules
         
         public override void InstallBindings(ServiceContainer container)
         {
+            var delayed = new DelayedCommandProvider<RestartGameCommand>();
+            container.SetServiceSelf(delayed);
             var follower = new TargetFollower(_playerFollowConfig, 
                 container.GetService<PlayerBase>().transform, 
                 _cameraTransform);
@@ -32,7 +36,8 @@ namespace App.Scripts.Game.Installers.Modules
             _sceneStarter.Construct(container.GetService<PanelManager>(), 
                 container.GetService<TickableContainer<LaneHandler>>(),
                 container.GetService<PlayerBase>(),
-                container.GetService<FixedTickableHandler>());
+                container.GetService<FixedTickableHandler>(),
+                delayed);
         }
     }
 }
