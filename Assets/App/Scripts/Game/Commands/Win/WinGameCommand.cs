@@ -14,12 +14,13 @@ namespace App.Scripts.Game.Commands.Win
             _panelManager = panelManager;
         }
         
-        public void Execute()
+        public async void Execute()
         {
-            _panelManager.GetPanel<ChestPanelController>().Hide();
+            await _panelManager.GetPanel<ChestPanelController>().HideAnimated();
             
             var panel = _panelManager.GetPanel<WinPanelController>();
-            panel.ShowAnimated();
+            
+            await panel.ShowAnimated();
         }
     }
 }

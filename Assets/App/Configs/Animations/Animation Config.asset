@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14926e376e3c47f394188bfdcc87ddee, type: 3}
   m_Name: Animation Config
   m_EditorClassIdentifier: 
-  duration: 0.25
+  duration: 0.5
   inEase: 3
   outEase: 2

@@ -28,13 +28,20 @@ namespace App.Scripts.Game.Entity.Pool.Enemy
             
             CreateStartPool();
         }
-        
+
+        public override EnemyBase Get()
+        {
+            var obj = base.Get();
+            obj.DamageableEntity.Construct(_enemyConfig.Health, new EnemyKilledCommand(obj, this, _handler));
+
+            return obj;
+        }
+
         protected override EnemyBase Create()
         {
             var obj = Instantiate(prefab, transform);
             
             obj.AttackingEntity.Construct(_enemyConfig.AttackLayerMask, _enemyConfig.Damage);
-            obj.DamageableEntity.Construct(_enemyConfig.Health, new EnemyKilledCommand(obj, this, _handler));
             obj.EnemyAnimator.Construct(_enemyConfig.AttackRate, _timer);
             var followTargetDirectionProvider = new FollowTargetDirectionProvider(
                 _playerTransform, 

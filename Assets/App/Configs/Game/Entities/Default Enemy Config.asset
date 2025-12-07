@@ -19,4 +19,4 @@ MonoBehaviour:
   AttackLayerMask:
     serializedVersion: 2
     m_Bits: 8
-  AttackRate: 5
+  AttackRate: 3
